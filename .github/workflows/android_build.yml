@@ -21,19 +21,21 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
 
-      - name: Download Godot & Export Templates
+      - - name: Download Godot & Export Templates
         run: |
           GODOT_VERSION=4.3-stable
           wget https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}/Godot_v${GODOT_VERSION}_linux.x86_64.zip
           unzip Godot_v${GODOT_VERSION}_linux.x86_64.zip
           sudo mv Godot_v${GODOT_VERSION}_linux.x86_64 /usr/local/bin/godot
           
-          # Godot expects export templates in a folder matching the exact tag string
-          mkdir -p ~/.local/share/godot/export_templates/${GODOT_VERSION}
+          # Force create the exact version path Godot looks for
+          mkdir -p ~/.local/share/godot/export_templates/4.3.stable
           wget https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}/Godot_v${GODOT_VERSION}_export_templates.tpz
           unzip Godot_v${GODOT_VERSION}_export_templates.tpz
-          # The zip extracts to a folder named 'templates'; move its contents directly
-          mv templates/* ~/.local/share/godot/export_templates/${GODOT_VERSION}/
+          
+          # Move contents securely into place
+          cp -r templates/* ~/.local/share/godot/export_templates/4.3.stable/ || cp -r . ~/.local/share/godot/export_templates/4.3.stable/
+          ls -la ~/.local/share/godot/export_templates/4.3.stable/
 
       - name: Create build directory
         run: mkdir -p build
