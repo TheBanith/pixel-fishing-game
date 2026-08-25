@@ -12,27 +12,35 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Cache the .godot folder to drastically speed up future builds and avoid timeouts
-      - name: Cache .godot folder
-        uses: actions/cache@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
         with:
-          path: .godot
-          key: ${{ runner.os }}-godot-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-godot-
+          distribution: 'temurin'
+          java-version: '17'
 
-      # Godot requires the export destination folder to exist before exporting
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      - name: Download Godot & Export Templates
+        run: |
+          GODOT_VERSION=4.3-stable
+          wget https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}/Godot_v${GODOT_VERSION}_linux.x86_64.zip
+          unzip Godot_v${GODOT_VERSION}_linux.x86_64.zip
+          mv Godot_v${GODOT_VERSION}_linux.x86_64 /usr/local/bin/godot
+          
+          mkdir -p ~/.local/share/godot/export_templates/${GODOT_VERSION%.*}
+          wget https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}/Godot_v${GODOT_VERSION}_export_templates.tpz
+          unzip Godot_v${GODOT_VERSION}_export_templates.tpz
+          mv templates/* ~/.local/share/godot/export_templates/${GODOT_VERSION%.*}
+
       - name: Create build directory
         run: mkdir -p build
 
-      # Installs JDK 17 + Android SDK, downloads Godot 4.3-stable and its export
-      # templates, imports assets headlessly, then runs the export
-      - name: Export Android APK
-        uses: dulvui/godot-android-export@v4
-        with:
-          godot-version: 4.3
-          godot-channel: stable
-          working-directory: .
+      - name: Run Headless Import
+        run: godot --headless --path . --quit
+
+      - name: Export Android Release APK
+        run: godot --headless --path . --export-release "Android" build/PixelFishing.apk
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
