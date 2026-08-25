@@ -1,0 +1,79 @@
+{
+  "categories": [
+    {
+      "id": "rod",
+      "name": "Fishing Rod",
+      "max_level": 3,
+      "levels": [
+        {
+          "level": 1,
+          "cost": 0,
+          "icon": "res://assets/fisherman.png",
+          "safe_zone_width": 35.0
+        },
+        {
+          "level": 2,
+          "cost": 30,
+          "icon": "res://assets/fisherman.png",
+          "safe_zone_width": 48.0
+        },
+        {
+          "level": 3,
+          "cost": 60,
+          "icon": "res://assets/fisherman.png",
+          "safe_zone_width": 65.0
+        }
+      ]
+    },
+    {
+      "id": "reel",
+      "name": "Fishing Reel",
+      "max_level": 3,
+      "levels": [
+        {
+          "level": 1,
+          "cost": 0,
+          "icon": "res://assets/fishing_reel1.png",
+          "speed_mult": 1.0
+        },
+        {
+          "level": 2,
+          "cost": 25,
+          "icon": "res://assets/fishing_ree2.png",
+          "speed_mult": 1.3
+        },
+        {
+          "level": 3,
+          "cost": 50,
+          "icon": "res://assets/fishing_ree2.png",
+          "speed_mult": 1.6
+        }
+      ]
+    },
+    {
+      "id": "cooler",
+      "name": "Cooler Box",
+      "max_level": 3,
+      "levels": [
+        {
+          "level": 1,
+          "cost": 0,
+          "icon": "res://assets/tackle_box1.png",
+          "max_storage": 5
+        },
+        {
+          "level": 2,
+          "cost": 20,
+          "icon": "res://assets/tackle_box2.png",
+          "max_storage": 10
+        },
+        {
+          "level": 3,
+          "cost": 45,
+          "icon": "res://assets/tackle_box3.png",
+          "max_storage": 15
+        }
+      ]
+    }
+  ]
+}

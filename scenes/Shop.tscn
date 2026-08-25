@@ -1,0 +1,229 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://scripts/Shop.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/fisherman.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/fishing_reel1.png" id="3"]
+[ext_resource type="Texture2D" path="res://assets/fishing_ree2.png" id="4"]
+[ext_resource type="Texture2D" path="res://assets/tackle_box1.png" id="5"]
+[ext_resource type="Texture2D" path="res://assets/tackle_box2.png" id="6"]
+[ext_resource type="Texture2D" path="res://assets/tackle_box3.png" id="7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Panel"]
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.08, 0.1, 0.16, 0.97)
+border_color = Color(0.85, 0.95, 0.7, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Buy"]
+bg_color = Color(0.18, 0.5, 0.22, 1)
+border_color = Color(0.85, 0.95, 0.7, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_BuyOff"]
+bg_color = Color(0.22, 0.22, 0.25, 1)
+border_color = Color(0.45, 0.45, 0.5, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Close"]
+bg_color = Color(0.45, 0.16, 0.12, 1)
+border_color = Color(0.98, 0.75, 0.4, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[node name="Shop" type="CanvasLayer"]
+layer = 10
+process_mode = 3
+visible = false
+script = ExtResource("1")
+
+[node name="Root" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Dim" type="ColorRect" parent="Root"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="Panel" type="PanelContainer" parent="Root"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -78.0
+offset_right = 146.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_Panel")
+
+[node name="VBox" type="VBoxContainer" parent="Root/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="Root/Panel/VBox"]
+layout_mode = 2
+text = "= GEAR SHOP ="
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(1, 0.95, 0.5, 1)
+theme_override_font_sizes/font_size = 10
+
+[node name="Grid" type="GridContainer" parent="Root/Panel/VBox"]
+layout_mode = 2
+columns = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+
+[node name="IconRod" type="TextureRect" parent="Root/Panel/VBox/Grid"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+texture = ExtResource("2")
+
+[node name="InfoRod" type="VBoxContainer" parent="Root/Panel/VBox/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="Root/Panel/VBox/Grid/InfoRod"]
+layout_mode = 2
+text = "ROD LV1/3"
+theme_override_colors/font_color = Color(0.8, 1, 0.8, 1)
+theme_override_font_sizes/font_size = 9
+
+[node name="InfoLabel" type="Label" parent="Root/Panel/VBox/Grid/InfoRod"]
+layout_mode = 2
+text = "ZONE 35 > ZONE 48
+COST 30"
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_font_sizes/font_size = 8
+
+[node name="BuyRod" type="Button" parent="Root/Panel/VBox/Grid"]
+custom_minimum_size = Vector2(46, 22)
+layout_mode = 2
+size_flags_vertical = 4
+text = "BUY"
+disabled = true
+theme_override_styles/normal = SubResource("StyleBoxFlat_Buy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_Buy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_Buy")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_BuyOff")
+theme_override_colors/font_color = Color(0.95, 1, 0.85, 1)
+theme_override_font_sizes/font_size = 9
+
+[node name="IconReel" type="TextureRect" parent="Root/Panel/VBox/Grid"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+texture = ExtResource("3")
+
+[node name="InfoReel" type="VBoxContainer" parent="Root/Panel/VBox/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="Root/Panel/VBox/Grid/InfoReel"]
+layout_mode = 2
+text = "REEL LV1/3"
+theme_override_colors/font_color = Color(0.8, 1, 0.8, 1)
+theme_override_font_sizes/font_size = 9
+
+[node name="InfoLabel" type="Label" parent="Root/Panel/VBox/Grid/InfoReel"]
+layout_mode = 2
+text = "SPD x1.0 > SPD x1.3
+COST 25"
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_font_sizes/font_size = 8
+
+[node name="BuyReel" type="Button" parent="Root/Panel/VBox/Grid"]
+custom_minimum_size = Vector2(46, 22)
+layout_mode = 2
+size_flags_vertical = 4
+text = "BUY"
+disabled = true
+theme_override_styles/normal = SubResource("StyleBoxFlat_Buy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_Buy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_Buy")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_BuyOff")
+theme_override_colors/font_color = Color(0.95, 1, 0.85, 1)
+theme_override_font_sizes/font_size = 9
+
+[node name="IconCooler" type="TextureRect" parent="Root/Panel/VBox/Grid"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+texture = ExtResource("5")
+
+[node name="InfoCooler" type="VBoxContainer" parent="Root/Panel/VBox/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="Root/Panel/VBox/Grid/InfoCooler"]
+layout_mode = 2
+text = "COOLER LV1/3"
+theme_override_colors/font_color = Color(0.8, 1, 0.8, 1)
+theme_override_font_sizes/font_size = 9
+
+[node name="InfoLabel" type="Label" parent="Root/Panel/VBox/Grid/InfoCooler"]
+layout_mode = 2
+text = "HOLD 5 > HOLD 10
+COST 20"
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_font_sizes/font_size = 8
+
+[node name="BuyCooler" type="Button" parent="Root/Panel/VBox/Grid"]
+custom_minimum_size = Vector2(46, 22)
+layout_mode = 2
+size_flags_vertical = 4
+text = "BUY"
+disabled = true
+theme_override_styles/normal = SubResource("StyleBoxFlat_Buy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_Buy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_Buy")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_BuyOff")
+theme_override_colors/font_color = Color(0.95, 1, 0.85, 1)
+theme_override_font_sizes/font_size = 9
+
+[node name="HBox" type="HBoxContainer" parent="Root/Panel/VBox"]
+layout_mode = 2
+
+[node name="CoinsLabel" type="Label" parent="Root/Panel/VBox/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "COINS 0"
+theme_override_colors/font_color = Color(1, 0.95, 0.5, 1)
+theme_override_font_sizes/font_size = 9
+
+[node name="CloseBtn" type="Button" parent="Root/Panel/VBox/HBox"]
+custom_minimum_size = Vector2(56, 20)
+layout_mode = 2
+text = "CLOSE"
+theme_override_styles/normal = SubResource("StyleBoxFlat_Close")
+theme_override_styles/hover = SubResource("StyleBoxFlat_Close")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_Close")
+theme_override_colors/font_color = Color(1, 0.9, 0.6, 1)
+theme_override_font_sizes/font_size = 9

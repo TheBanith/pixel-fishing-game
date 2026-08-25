@@ -1,0 +1,31 @@
+name: Android Build
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-android:
+    name: Export Android APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Installs JDK 17 + Android SDK, downloads Godot 4.3-stable and its export
+      # templates, imports assets headlessly, then runs:
+      #   godot --headless --path . --export-release Android
+      # (preset name must match export_presets.cfg -> "Android")
+      - name: Export Android APK
+        uses: dulvui/godot-android-export@v4
+        with:
+          godot-version: 4.3
+          godot-channel: stable
+          working-directory: .
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PixelFishing-Android-Build
+          path: build/*.apk
+          if-no-files-found: error

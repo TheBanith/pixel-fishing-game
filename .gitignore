@@ -1,0 +1,8 @@
+# Godot editor / build artifacts
+.godot/
+android/
+imported/
+
+# OS / editor
+.DS_Store
+Thumbs.db

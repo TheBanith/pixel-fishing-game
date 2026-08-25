@@ -1,0 +1,134 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/Market.gd" id="1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Panel"]
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.08, 0.1, 0.16, 0.97)
+border_color = Color(0.98, 0.85, 0.4, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Sell"]
+bg_color = Color(0.55, 0.4, 0.08, 1)
+border_color = Color(1, 0.95, 0.5, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Off"]
+bg_color = Color(0.22, 0.22, 0.25, 1)
+border_color = Color(0.45, 0.45, 0.5, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Close"]
+bg_color = Color(0.45, 0.16, 0.12, 1)
+border_color = Color(0.98, 0.75, 0.4, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[node name="Market" type="CanvasLayer"]
+layer = 11
+process_mode = 3
+visible = false
+script = ExtResource("1")
+
+[node name="Root" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Dim" type="ColorRect" parent="Root"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="Panel" type="PanelContainer" parent="Root"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -82.0
+offset_right = 148.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_Panel")
+
+[node name="VBox" type="VBoxContainer" parent="Root/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="Root/Panel/VBox"]
+layout_mode = 2
+text = "= FISH MARKET ="
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(1, 0.95, 0.5, 1)
+theme_override_font_sizes/font_size = 10
+
+[node name="HeaderInfo" type="Label" parent="Root/Panel/VBox"]
+layout_mode = 2
+text = "COOLER: 0/5    EST. VALUE: 0 G"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.8, 1, 0.8, 1)
+theme_override_font_sizes/font_size = 8
+
+[node name="Scroll" type="ScrollContainer" parent="Root/Panel/VBox"]
+custom_minimum_size = Vector2(0, 74)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="List" type="VBoxContainer" parent="Root/Panel/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 3
+
+[node name="HBox" type="HBoxContainer" parent="Root/Panel/VBox"]
+layout_mode = 2
+
+[node name="SellAllBtn" type="Button" parent="Root/Panel/VBox/HBox"]
+custom_minimum_size = Vector2(64, 20)
+layout_mode = 2
+disabled = true
+text = "SELL ALL"
+theme_override_styles/normal = SubResource("StyleBoxFlat_Sell")
+theme_override_styles/hover = SubResource("StyleBoxFlat_Sell")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_Sell")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_Off")
+theme_override_colors/font_color = Color(1, 0.97, 0.7, 1)
+theme_override_colors/font_disabled_color = Color(0.6, 0.6, 0.65, 1)
+theme_override_font_sizes/font_size = 9
+
+[node name="Spacer" type="Control" parent="Root/Panel/VBox/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CloseBtn" type="Button" parent="Root/Panel/VBox/HBox"]
+custom_minimum_size = Vector2(56, 20)
+layout_mode = 2
+text = "CLOSE"
+theme_override_styles/normal = SubResource("StyleBoxFlat_Close")
+theme_override_styles/hover = SubResource("StyleBoxFlat_Close")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_Close")
+theme_override_colors/font_color = Color(1, 0.9, 0.6, 1)
+theme_override_font_sizes/font_size = 9

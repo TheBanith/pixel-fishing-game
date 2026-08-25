@@ -1,0 +1,100 @@
+{
+  "fish": [
+    {
+      "id": "bass_common",
+      "name": "Common Bass",
+      "sprite_path": "res://assets/fish_bass1 (1).png",
+      "spawn_depth_min": 90,
+      "spawn_depth_max": 115,
+      "speed": 50,
+      "rarity": 1,
+      "base_weight": 1.0,
+      "coin_value": 5,
+      "stage": 1
+    },
+    {
+      "id": "bass_green",
+      "name": "Green Bass",
+      "sprite_path": "res://assets/fish_bass2 (1).png",
+      "spawn_depth_min": 85,
+      "spawn_depth_max": 110,
+      "speed": 65,
+      "rarity": 2,
+      "base_weight": 1.4,
+      "coin_value": 9,
+      "stage": 2
+    },
+    {
+      "id": "bass_trophy",
+      "name": "Trophy Bass",
+      "sprite_path": "res://assets/fish_bass3 (1).png",
+      "spawn_depth_min": 140,
+      "spawn_depth_max": 172,
+      "speed": 45,
+      "rarity": 5,
+      "base_weight": 5.0,
+      "coin_value": 50,
+      "stage": 3
+    },
+    {
+      "id": "carp_river",
+      "name": "River Carp",
+      "sprite_path": "res://assets/fish_carp1 (1).png",
+      "spawn_depth_min": 100,
+      "spawn_depth_max": 135,
+      "speed": 40,
+      "rarity": 1,
+      "base_weight": 2.0,
+      "coin_value": 6,
+      "stage": 1
+    },
+    {
+      "id": "carp_gold",
+      "name": "Golden Carp",
+      "sprite_path": "res://assets/fish_carp3 (1).png",
+      "spawn_depth_min": 125,
+      "spawn_depth_max": 160,
+      "speed": 55,
+      "rarity": 4,
+      "base_weight": 3.0,
+      "coin_value": 25,
+      "stage": 2
+    },
+    {
+      "id": "trout_stream",
+      "name": "Stream Trout",
+      "sprite_path": "res://assets/fish_trout1 (1).png",
+      "spawn_depth_min": 72,
+      "spawn_depth_max": 100,
+      "speed": 80,
+      "rarity": 2,
+      "base_weight": 1.2,
+      "coin_value": 8,
+      "stage": 1
+    },
+    {
+      "id": "trout_silver",
+      "name": "Silver Trout",
+      "sprite_path": "res://assets/fish_trout3 (1).png",
+      "spawn_depth_min": 110,
+      "spawn_depth_max": 150,
+      "speed": 70,
+      "rarity": 3,
+      "base_weight": 1.8,
+      "coin_value": 15,
+      "stage": 2
+    },
+    {
+      "id": "trout_royal",
+      "name": "Royal Trout",
+      "sprite_path": "res://assets/fish_trout5 (1).png",
+      "spawn_depth_min": 130,
+      "spawn_depth_max": 172,
+      "speed": 60,
+      "rarity": 5,
+      "base_weight": 4.0,
+      "coin_value": 40,
+      "stage": 3
+    }
+  ]
+}
