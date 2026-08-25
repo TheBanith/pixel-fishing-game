@@ -26,12 +26,14 @@ jobs:
           GODOT_VERSION=4.3-stable
           wget https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}/Godot_v${GODOT_VERSION}_linux.x86_64.zip
           unzip Godot_v${GODOT_VERSION}_linux.x86_64.zip
-          mv Godot_v${GODOT_VERSION}_linux.x86_64 /usr/local/bin/godot
+          sudo mv Godot_v${GODOT_VERSION}_linux.x86_64 /usr/local/bin/godot
           
-          mkdir -p ~/.local/share/godot/export_templates/${GODOT_VERSION%.*}
+          # Godot expects export templates in a folder matching the exact tag string
+          mkdir -p ~/.local/share/godot/export_templates/${GODOT_VERSION}
           wget https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}/Godot_v${GODOT_VERSION}_export_templates.tpz
           unzip Godot_v${GODOT_VERSION}_export_templates.tpz
-          mv templates/* ~/.local/share/godot/export_templates/${GODOT_VERSION%.*}
+          # The zip extracts to a folder named 'templates'; move its contents directly
+          mv templates/* ~/.local/share/godot/export_templates/${GODOT_VERSION}/
 
       - name: Create build directory
         run: mkdir -p build
