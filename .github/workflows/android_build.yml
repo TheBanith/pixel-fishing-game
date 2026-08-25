@@ -35,6 +35,24 @@ jobs:
           cp -r templates/* ~/.local/share/godot/export_templates/4.3.stable/
           ls -la ~/.local/share/godot/export_templates/4.3.stable/
 
+      - name: Generate Debug Keystore and Configure Godot Settings
+        run: |
+          keytool -keyalg RSA -genkeypair -alias androiddebugkey -keypass android -keystore debug.keystore -storepass android -dname "CN=Android Debug,O=Android,C=US" -validity 9999 -deststoretype pkcs12
+          
+          # Initialize editor settings directory
+          mkdir -p ~/.config/godot
+          
+          # Tell Godot where the Android SDK and Keystore are located
+          cat <<EOF > ~/.config/godot/editor_settings-4.3.tres
+          [gd_resource type="EditorSettings" format=3]
+
+          [resource]
+          export/android/android_sdk_path = "${ANDROID_HOME}"
+          export/android/debug_keystore = "${GITHUB_WORKSPACE}/debug.keystore"
+          export/android/debug_keystore_user = "androiddebugkey"
+          export/android/debug_keystore_pass = "android"
+          EOF
+
       - name: Create build directory
         run: mkdir -p build
 
