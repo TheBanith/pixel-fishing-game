@@ -13,6 +13,6 @@ func _process(delta):
     if _lifetime <= 0.0:
         queue_free()
 
-func set_text(value: String, color: Color = Color.WHITE):
+func init_text(value: String, color: Color = Color.WHITE):
     text = value
     modulate = Color(color.r, color.g, color.b, 1.0)
