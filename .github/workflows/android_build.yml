@@ -12,10 +12,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Cache the .godot folder to drastically speed up future builds and avoid timeouts
+      - name: Cache .godot folder
+        uses: actions/cache@v4
+        with:
+          path: .godot
+          key: ${{ runner.os }}-godot-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-godot-
+
+      # Godot requires the export destination folder to exist before exporting
+      - name: Create build directory
+        run: mkdir -p build
+
       # Installs JDK 17 + Android SDK, downloads Godot 4.3-stable and its export
-      # templates, imports assets headlessly, then runs:
-      #   godot --headless --path . --export-release Android
-      # (preset name must match export_presets.cfg -> "Android")
+      # templates, imports assets headlessly, then runs the export
       - name: Export Android APK
         uses: dulvui/godot-android-export@v4
         with:
